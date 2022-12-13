@@ -472,7 +472,7 @@ public class PracticeFile {
 					System.out.println("The position already choosen");
 				}
 			}
-			else if (player2Move == 9) {
+			else if (player1Move == 9) {
 				if (ticTacToeArr [2][2] != "X" || ticTacToeArr [2][2] != "O") {
 					ticTacToeArr [2][2] = "X";
 				}
@@ -506,11 +506,12 @@ public class PracticeFile {
 			}		
 		}
 		
-		//if  player 1 select unknown selection
+		
+		}
+		//if  player 1 select unknown selection	
 		else {
 			System.out.println("Wrong selection");
 		}
 		
-										
 		} //End
 	}
