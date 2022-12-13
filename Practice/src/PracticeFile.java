@@ -57,7 +57,8 @@ public class PracticeFile {
 			
 			//check the selection position of player1 and add value
 			if (player1Move == 1) {
-				if (ticTacToeArr [0][0] != "X" || ticTacToeArr [0][0] != "O") {
+				if (ticTacToeArr [0][0] != "X" && ticTacToeArr [0][0] != "O") {
+					//add value
 					ticTacToeArr [0][0] = "X";
 				}
 				else {
@@ -65,7 +66,8 @@ public class PracticeFile {
 				}				
 			}
 			else if (player1Move == 2) {
-				if (ticTacToeArr [0][1] != "X" || ticTacToeArr [0][1] != "O") {
+				if (ticTacToeArr [0][1] != "X" && ticTacToeArr [0][1] != "O") {
+					//add value
 					ticTacToeArr [0][1] = "X";
 				}
 				else {
@@ -73,7 +75,7 @@ public class PracticeFile {
 				}
 			}
 			else if (player1Move == 3) {
-				if (ticTacToeArr [0][2] != "X" || ticTacToeArr [0][2] != "O") {
+				if (ticTacToeArr [0][2] != "X" && ticTacToeArr [0][2] != "O") {
 					ticTacToeArr [0][2] = "X";
 				}
 				else {
@@ -81,7 +83,7 @@ public class PracticeFile {
 				}	
 			}
 			else if (player1Move == 4) {
-				if (ticTacToeArr [1][0] != "X" || ticTacToeArr [1][0] != "O") {
+				if (ticTacToeArr [1][0] != "X" && ticTacToeArr [1][0] != "O") {
 					ticTacToeArr [1][0] = "X";
 				}
 				else {
@@ -89,7 +91,7 @@ public class PracticeFile {
 				}
 			}
 			else if (player1Move == 5) {
-				if (ticTacToeArr [1][1] != "X" || ticTacToeArr [1][1] != "O") {
+				if (ticTacToeArr [1][1] != "X" && ticTacToeArr [1][1] != "O") {
 					ticTacToeArr [1][1] = "X";
 				}
 				else {
@@ -97,7 +99,7 @@ public class PracticeFile {
 				}
 			}
 			else if (player1Move == 6) {
-				if (ticTacToeArr [1][2] != "X" || ticTacToeArr [1][2] != "O") {
+				if (ticTacToeArr [1][2] != "X" && ticTacToeArr [1][2] != "O") {
 					ticTacToeArr [1][2] = "X";
 				}
 				else {
@@ -105,7 +107,7 @@ public class PracticeFile {
 				}
 			}
 			else if (player1Move == 7) {
-				if (ticTacToeArr [2][0] != "X" || ticTacToeArr [2][0] != "O") {
+				if (ticTacToeArr [2][0] != "X" && ticTacToeArr [2][0] != "O") {
 					ticTacToeArr [2][0] = "X";
 				}
 				else {
@@ -113,7 +115,7 @@ public class PracticeFile {
 				}
 			}
 			else if (player1Move == 8) {
-				if (ticTacToeArr [2][1] != "X" || ticTacToeArr [2][1] != "O") {
+				if (ticTacToeArr [2][1] != "X" && ticTacToeArr [2][1] != "O") {
 					ticTacToeArr [2][1] = "X";
 				}
 				else {
@@ -121,7 +123,7 @@ public class PracticeFile {
 				}
 			}
 			else if (player1Move == 9) {
-				if (ticTacToeArr [2][2] != "X" || ticTacToeArr [2][2] != "O") {
+				if (ticTacToeArr [2][2] != "X" && ticTacToeArr [2][2] != "O") {
 					ticTacToeArr [2][2] = "X";
 				}
 				else {
@@ -152,7 +154,7 @@ public class PracticeFile {
 				System.out.println();
 				//display win message
 				System.out.println("Player 1, you win !");
-				
+				break;
 			}
 			
 			//display the board
@@ -171,15 +173,15 @@ public class PracticeFile {
 			
 			//check the selection position of player2 and add value
 			if (player2Move == 1) {
-				if (ticTacToeArr [0][0] != "O" || ticTacToeArr [0][0] != "X") {
+				if (ticTacToeArr [0][0] != "O" && ticTacToeArr [0][0] != "X") {
 					ticTacToeArr [0][0] = "O";
 				}
-				else {
+				else{
 					System.out.println("The position already choosen");
 				}				
 			}
 			else if (player2Move == 2) {
-				if (ticTacToeArr [0][1] != "O" || ticTacToeArr [0][1] != "X") {
+				if (ticTacToeArr [0][1] != "O" && ticTacToeArr [0][1] != "X") {
 					ticTacToeArr [0][1] = "O";
 				}
 				else {
@@ -187,7 +189,7 @@ public class PracticeFile {
 				}
 			}
 			else if (player2Move == 3) {
-				if (ticTacToeArr [0][2] != "O" || ticTacToeArr [0][2] != "X") {
+				if (ticTacToeArr [0][2] != "O" && ticTacToeArr [0][2] != "X") {
 					ticTacToeArr [0][2] = "O";
 				}
 				else {
@@ -195,7 +197,7 @@ public class PracticeFile {
 				}	
 			}
 			else if (player2Move == 4) {
-				if (ticTacToeArr [1][0] != "O" || ticTacToeArr [1][0] != "X") {
+				if (ticTacToeArr [1][0] != "O" && ticTacToeArr [1][0] != "X") {
 					ticTacToeArr [1][0] = "O";
 				}
 				else {
@@ -203,7 +205,7 @@ public class PracticeFile {
 				}
 			}
 			else if (player2Move == 5) {
-				if (ticTacToeArr [1][1] != "O" || ticTacToeArr [1][1] != "X") {
+				if (ticTacToeArr [1][1] != "O" && ticTacToeArr [1][1] != "X") {
 					ticTacToeArr [1][1] = "O";
 				}
 				else {
@@ -211,7 +213,7 @@ public class PracticeFile {
 				}
 			}
 			else if (player2Move == 6) {
-				if (ticTacToeArr [1][2] != "O" || ticTacToeArr [1][2] != "X") {
+				if (ticTacToeArr [1][2] != "O" && ticTacToeArr [1][2] != "X") {
 					ticTacToeArr [1][2] = "O";
 				}
 				else {
@@ -219,7 +221,7 @@ public class PracticeFile {
 				}
 			}
 			else if (player2Move == 7) {
-				if (ticTacToeArr [2][0] != "O" || ticTacToeArr [2][0] != "X") {
+				if (ticTacToeArr [2][0] != "O" && ticTacToeArr [2][0] != "X") {
 					ticTacToeArr [2][0] = "O";
 				}
 				else {
@@ -227,7 +229,7 @@ public class PracticeFile {
 				}
 			}
 			else if (player2Move == 8) {
-				if (ticTacToeArr [2][1] != "O" || ticTacToeArr [2][1] != "X") {
+				if (ticTacToeArr [2][1] != "O" && ticTacToeArr [2][1] != "X") {
 					ticTacToeArr [2][1] = "O";
 				}
 				else {
@@ -235,7 +237,7 @@ public class PracticeFile {
 				}
 			}
 			else if (player2Move == 9) {
-				if (ticTacToeArr [2][2] != "O" || ticTacToeArr [2][2] != "X") {
+				if (ticTacToeArr [2][2] != "O" && ticTacToeArr [2][2] != "X") {
 					ticTacToeArr [2][2] = "O";
 				}
 				else {
@@ -266,7 +268,7 @@ public class PracticeFile {
 				System.out.println();
 				//display win message
 				System.out.println("Player 2, you win !");
-				
+				break;
 			}
 			}		
 		}				
@@ -294,7 +296,7 @@ public class PracticeFile {
 			
 			//check the selection position of player1 and add value
 			if (player1Move == 1) {
-				if (ticTacToeArr [0][0] != "O" || ticTacToeArr [0][0] != "X") {
+				if (ticTacToeArr [0][0] != "O" && ticTacToeArr [0][0] != "X") {
 					ticTacToeArr [0][0] = "O";
 				}
 				else {
@@ -302,7 +304,7 @@ public class PracticeFile {
 				}				
 			}
 			else if (player1Move == 2) {
-				if (ticTacToeArr [0][1] != "O" || ticTacToeArr [0][1] != "X") {
+				if (ticTacToeArr [0][1] != "O" && ticTacToeArr [0][1] != "X") {
 					ticTacToeArr [0][1] = "O";
 				}
 				else {
@@ -310,7 +312,7 @@ public class PracticeFile {
 				}
 			}
 			else if (player1Move == 3) {
-				if (ticTacToeArr [0][2] != "O" || ticTacToeArr [0][2] != "X") {
+				if (ticTacToeArr [0][2] != "O" && ticTacToeArr [0][2] != "X") {
 					ticTacToeArr [0][2] = "O";
 				}
 				else {
@@ -318,7 +320,7 @@ public class PracticeFile {
 				}	
 			}
 			else if (player1Move == 4) {
-				if (ticTacToeArr [1][0] != "O" || ticTacToeArr [1][0] != "X") {
+				if (ticTacToeArr [1][0] != "O" && ticTacToeArr [1][0] != "X") {
 					ticTacToeArr [1][0] = "O";
 				}
 				else {
@@ -326,7 +328,7 @@ public class PracticeFile {
 				}
 			}
 			else if (player1Move == 5) {
-				if (ticTacToeArr [1][1] != "O" || ticTacToeArr [1][1] != "X") {
+				if (ticTacToeArr [1][1] != "O" && ticTacToeArr [1][1] != "X") {
 					ticTacToeArr [1][1] = "O";
 				}
 				else {
@@ -334,7 +336,7 @@ public class PracticeFile {
 				}
 			}
 			else if (player1Move == 6) {
-				if (ticTacToeArr [1][2] != "O" || ticTacToeArr [1][2] != "X") {
+				if (ticTacToeArr [1][2] != "O" && ticTacToeArr [1][2] != "X") {
 					ticTacToeArr [1][2] = "O";
 				}
 				else {
@@ -342,7 +344,7 @@ public class PracticeFile {
 				}
 			}
 			else if (player1Move == 7) {
-				if (ticTacToeArr [2][0] != "O" || ticTacToeArr [2][0] != "X") {
+				if (ticTacToeArr [2][0] != "O" && ticTacToeArr [2][0] != "X") {
 					ticTacToeArr [2][0] = "O";
 				}
 				else {
@@ -350,7 +352,7 @@ public class PracticeFile {
 				}
 			}
 			else if (player1Move == 8) {
-				if (ticTacToeArr [2][1] != "O" || ticTacToeArr [2][1] != "X") {
+				if (ticTacToeArr [2][1] != "O" && ticTacToeArr [2][1] != "X") {
 					ticTacToeArr [2][1] = "O";
 				}
 				else {
@@ -358,7 +360,7 @@ public class PracticeFile {
 				}
 			}
 			else if (player1Move == 9) {
-				if (ticTacToeArr [2][2] != "O" || ticTacToeArr [2][2] != "X") {
+				if (ticTacToeArr [2][2] != "O" && ticTacToeArr [2][2] != "X") {
 					ticTacToeArr [2][2] = "O";
 				}
 				else {
@@ -390,7 +392,7 @@ public class PracticeFile {
 				System.out.println();
 				//display win message
 				System.out.println("Player 1, you win !");
-				
+				break;
 			}
 			
 			//display the board
@@ -409,7 +411,7 @@ public class PracticeFile {
 			
 			//check the selection position of player2 and add value
 			if (player2Move == 1) {
-				if (ticTacToeArr [0][0] != "X" || ticTacToeArr [0][0] != "O") {
+				if (ticTacToeArr [0][0] != "X" && ticTacToeArr [0][0] != "O") {
 					ticTacToeArr [0][0] = "X";
 				}
 				else {
@@ -417,7 +419,7 @@ public class PracticeFile {
 				}				
 			}
 			else if (player2Move == 2) {
-				if (ticTacToeArr [0][1] != "X" || ticTacToeArr [0][1] != "O") {
+				if (ticTacToeArr [0][1] != "X" && ticTacToeArr [0][1] != "O") {
 					ticTacToeArr [0][1] = "X";
 				}
 				else {
@@ -425,7 +427,7 @@ public class PracticeFile {
 				}
 			}
 			else if (player2Move == 3) {
-				if (ticTacToeArr [0][2] != "X" || ticTacToeArr [0][2] != "O") {
+				if (ticTacToeArr [0][2] != "X" && ticTacToeArr [0][2] != "O") {
 					ticTacToeArr [0][2] = "X";
 				}
 				else {
@@ -433,7 +435,7 @@ public class PracticeFile {
 				}	
 			}
 			else if (player2Move == 4) {
-				if (ticTacToeArr [1][0] != "X" || ticTacToeArr [1][0] != "O") {
+				if (ticTacToeArr [1][0] != "X" && ticTacToeArr [1][0] != "O") {
 					ticTacToeArr [1][0] = "X";
 				}
 				else {
@@ -441,7 +443,7 @@ public class PracticeFile {
 				}
 			}
 			else if (player2Move == 5) {
-				if (ticTacToeArr [1][1] != "X" || ticTacToeArr [1][1] != "O") {
+				if (ticTacToeArr [1][1] != "X" && ticTacToeArr [1][1] != "O") {
 					ticTacToeArr [1][1] = "X";
 				}
 				else {
@@ -449,7 +451,7 @@ public class PracticeFile {
 				}
 			}
 			else if (player2Move == 6) {
-				if (ticTacToeArr [1][2] != "X" || ticTacToeArr [1][2] != "O") {
+				if (ticTacToeArr [1][2] != "X" && ticTacToeArr [1][2] != "O") {
 					ticTacToeArr [1][2] = "X";
 				}
 				else {
@@ -457,7 +459,7 @@ public class PracticeFile {
 				}
 			}
 			else if (player2Move == 7) {
-				if (ticTacToeArr [2][0] != "X" || ticTacToeArr [2][0] != "O") {
+				if (ticTacToeArr [2][0] != "X" && ticTacToeArr [2][0] != "O") {
 					ticTacToeArr [2][0] = "X";
 				}
 				else {
@@ -465,7 +467,7 @@ public class PracticeFile {
 				}
 			}
 			else if (player2Move == 8) {
-				if (ticTacToeArr [2][1] != "X" || ticTacToeArr [2][1] != "O") {
+				if (ticTacToeArr [2][1] != "X" && ticTacToeArr [2][1] != "O") {
 					ticTacToeArr [2][1] = "X";
 				}
 				else {
@@ -473,7 +475,7 @@ public class PracticeFile {
 				}
 			}
 			else if (player1Move == 9) {
-				if (ticTacToeArr [2][2] != "X" || ticTacToeArr [2][2] != "O") {
+				if (ticTacToeArr [2][2] != "X" && ticTacToeArr [2][2] != "O") {
 					ticTacToeArr [2][2] = "X";
 				}
 			//if  player 2 select unknown selection
@@ -502,6 +504,7 @@ public class PracticeFile {
 				//display win message
 				System.out.println("Player 2, you win !");
 				
+				break;
 			}
 			}		
 		}
