@@ -50,7 +50,7 @@ public class PracticeFile {
 			// display the board
 			printBoard(board);
 
-			// display win message
+			// display draw message
 			System.out.println("Draw, No winner !");
 			Draw = true;
 		}
