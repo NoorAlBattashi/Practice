@@ -10,6 +10,16 @@
 import java.util.Scanner;
 
 public class PracticeFile {
+	
+	private static void printBoard(String[][] board) {
+		System.out.println();
+		System.out.println(board[0][0] + "  |  " + board[0][1] + "  |  " + board[0][2]);
+		System.out.println("-------------");
+		System.out.println(board[1][0] + "  |  " + board[1][1] + "  |  " + board[1][2]);
+		System.out.println("-------------");
+		System.out.println(board[2][0] + "  |  " + board[2][1] + "  |  " + board[2][2]);
+		System.out.println();
+	}
 
 	/**
 	 * @param args : practice
@@ -19,12 +29,7 @@ public class PracticeFile {
 		String[][] ticTacToeArr = { { "1", "2", "3" }, { "4", "5", "6" }, { "7", "8", "9" } };
 
 		// display the board
-		System.out.println(ticTacToeArr[0][0] + "  |  " + ticTacToeArr[0][1] + "  |  " + ticTacToeArr[0][2]);
-		System.out.println("-------------");
-		System.out.println(ticTacToeArr[1][0] + "  |  " + ticTacToeArr[1][1] + "  |  " + ticTacToeArr[1][2]);
-		System.out.println("-------------");
-		System.out.println(ticTacToeArr[2][0] + "  |  " + ticTacToeArr[2][1] + "  |  " + ticTacToeArr[2][2]);
-		System.out.println();
+		printBoard(ticTacToeArr);
 
 		// players select there symbol
 		System.out.println("Player 1 select Symbol: X or O");
@@ -51,19 +56,17 @@ public class PracticeFile {
 			while (validTurnsCounter < 9) {
 
 				// display the board
-				System.out.println();
-				System.out.println(ticTacToeArr[0][0] + "  |  " + ticTacToeArr[0][1] + "  |  " + ticTacToeArr[0][2]);
-				System.out.println("-------------");
-				System.out.println(ticTacToeArr[1][0] + "  |  " + ticTacToeArr[1][1] + "  |  " + ticTacToeArr[1][2]);
-				System.out.println("-------------");
-				System.out.println(ticTacToeArr[2][0] + "  |  " + ticTacToeArr[2][1] + "  |  " + ticTacToeArr[2][2]);
-				System.out.println();
+				printBoard(ticTacToeArr);
+				
 				if (PlayerOneTurn == true) {
 					// player 1 select move
 					System.out.print("Player 1, Make a move, Enter position: ");
 					Scanner player1Movesc = new Scanner(System.in);
 					int player1Move = Integer.parseInt(player1Movesc.nextLine());
 					// player1Movesc.close();
+					String player1Symbol = "X";
+					String player2Symbol = "O";
+				
 
 					// check the selection position of player1 and add value
 					if (player1Move == 1) {
@@ -166,16 +169,8 @@ public class PracticeFile {
 							|| ticTacToeArr[0][2] == "X" && ticTacToeArr[1][2] == "X" && ticTacToeArr[2][2] == "X") {
 
 						// display the board
-						System.out.println();
-						System.out.println(
-								ticTacToeArr[0][0] + "  |  " + ticTacToeArr[0][1] + "  |  " + ticTacToeArr[0][2]);
-						System.out.println("-------------");
-						System.out.println(
-								ticTacToeArr[1][0] + "  |  " + ticTacToeArr[1][1] + "  |  " + ticTacToeArr[1][2]);
-						System.out.println("-------------");
-						System.out.println(
-								ticTacToeArr[2][0] + "  |  " + ticTacToeArr[2][1] + "  |  " + ticTacToeArr[2][2]);
-						System.out.println();
+						printBoard(ticTacToeArr);
+						
 						// display win message
 						System.out.println("Player 1, you win !");
 						break;
@@ -186,16 +181,8 @@ public class PracticeFile {
 							&& ticTacToeArr[2][0] != "7" && ticTacToeArr[2][1] != "8" && ticTacToeArr[2][2] != "9") {
 
 						// display the board
-						System.out.println();
-						System.out.println(
-								ticTacToeArr[0][0] + "  |  " + ticTacToeArr[0][1] + "  |  " + ticTacToeArr[0][2]);
-						System.out.println("-------------");
-						System.out.println(
-								ticTacToeArr[1][0] + "  |  " + ticTacToeArr[1][1] + "  |  " + ticTacToeArr[1][2]);
-						System.out.println("-------------");
-						System.out.println(
-								ticTacToeArr[2][0] + "  |  " + ticTacToeArr[2][1] + "  |  " + ticTacToeArr[2][2]);
-						System.out.println();
+						printBoard(ticTacToeArr);
+						
 						// display win message
 						System.out.println("Draw, No winner !");
 						break;
@@ -306,16 +293,8 @@ public class PracticeFile {
 										&& ticTacToeArr[2][2] == "O") {
 
 							// display the board
-							System.out.println();
-							System.out.println(
-									ticTacToeArr[0][0] + "  |  " + ticTacToeArr[0][1] + "  |  " + ticTacToeArr[0][2]);
-							System.out.println("-------------");
-							System.out.println(
-									ticTacToeArr[1][0] + "  |  " + ticTacToeArr[1][1] + "  |  " + ticTacToeArr[1][2]);
-							System.out.println("-------------");
-							System.out.println(
-									ticTacToeArr[2][0] + "  |  " + ticTacToeArr[2][1] + "  |  " + ticTacToeArr[2][2]);
-							System.out.println();
+							printBoard(ticTacToeArr);
+							
 							// display win message
 							System.out.println("Player 2, you win !");
 							break;
@@ -327,16 +306,8 @@ public class PracticeFile {
 								&& ticTacToeArr[2][2] != "9") {
 
 							// display the board
-							System.out.println();
-							System.out.println(
-									ticTacToeArr[0][0] + "  |  " + ticTacToeArr[0][1] + "  |  " + ticTacToeArr[0][2]);
-							System.out.println("-------------");
-							System.out.println(
-									ticTacToeArr[1][0] + "  |  " + ticTacToeArr[1][1] + "  |  " + ticTacToeArr[1][2]);
-							System.out.println("-------------");
-							System.out.println(
-									ticTacToeArr[2][0] + "  |  " + ticTacToeArr[2][1] + "  |  " + ticTacToeArr[2][2]);
-							System.out.println();
+							printBoard(ticTacToeArr);
+							
 							// display win message
 							System.out.println("Draw, No winner !");
 							break;
@@ -359,13 +330,8 @@ public class PracticeFile {
 			while (validTurnsCounter < 9) {
 
 				// display the board
-				System.out.println();
-				System.out.println(ticTacToeArr[0][0] + "  |  " + ticTacToeArr[0][1] + "  |  " + ticTacToeArr[0][2]);
-				System.out.println("-------------");
-				System.out.println(ticTacToeArr[1][0] + "  |  " + ticTacToeArr[1][1] + "  |  " + ticTacToeArr[1][2]);
-				System.out.println("-------------");
-				System.out.println(ticTacToeArr[2][0] + "  |  " + ticTacToeArr[2][1] + "  |  " + ticTacToeArr[2][2]);
-				System.out.println();
+				printBoard(ticTacToeArr);
+				
 				if (PlayerOneTurn == true) {
 					// player 1 select move
 					System.out.print("Player 1, Make a move, Enter position: ");
@@ -474,16 +440,8 @@ public class PracticeFile {
 							|| ticTacToeArr[0][2] == "O" && ticTacToeArr[1][2] == "O" && ticTacToeArr[2][2] == "O") {
 
 						// display the board
-						System.out.println();
-						System.out.println(
-								ticTacToeArr[0][0] + "  |  " + ticTacToeArr[0][1] + "  |  " + ticTacToeArr[0][2]);
-						System.out.println("-------------");
-						System.out.println(
-								ticTacToeArr[1][0] + "  |  " + ticTacToeArr[1][1] + "  |  " + ticTacToeArr[1][2]);
-						System.out.println("-------------");
-						System.out.println(
-								ticTacToeArr[2][0] + "  |  " + ticTacToeArr[2][1] + "  |  " + ticTacToeArr[2][2]);
-						System.out.println();
+						printBoard(ticTacToeArr);
+						
 						// display win message
 						System.out.println("Player 1, you win !");
 						break;
@@ -494,16 +452,8 @@ public class PracticeFile {
 							&& ticTacToeArr[2][0] != "7" && ticTacToeArr[2][1] != "8" && ticTacToeArr[2][2] != "9") {
 
 						// display the board
-						System.out.println();
-						System.out.println(
-								ticTacToeArr[0][0] + "  |  " + ticTacToeArr[0][1] + "  |  " + ticTacToeArr[0][2]);
-						System.out.println("-------------");
-						System.out.println(
-								ticTacToeArr[1][0] + "  |  " + ticTacToeArr[1][1] + "  |  " + ticTacToeArr[1][2]);
-						System.out.println("-------------");
-						System.out.println(
-								ticTacToeArr[2][0] + "  |  " + ticTacToeArr[2][1] + "  |  " + ticTacToeArr[2][2]);
-						System.out.println();
+						printBoard(ticTacToeArr);
+						
 						// display win message
 						System.out.println("Draw, No winner !");
 						break;
@@ -614,16 +564,8 @@ public class PracticeFile {
 										&& ticTacToeArr[2][2] == "X") {
 
 							// display the board
-							System.out.println();
-							System.out.println(
-									ticTacToeArr[0][0] + "  |  " + ticTacToeArr[0][1] + "  |  " + ticTacToeArr[0][2]);
-							System.out.println("-------------");
-							System.out.println(
-									ticTacToeArr[1][0] + "  |  " + ticTacToeArr[1][1] + "  |  " + ticTacToeArr[1][2]);
-							System.out.println("-------------");
-							System.out.println(
-									ticTacToeArr[2][0] + "  |  " + ticTacToeArr[2][1] + "  |  " + ticTacToeArr[2][2]);
-							System.out.println();
+							printBoard(ticTacToeArr);
+							
 							// display win message
 							System.out.println("Player 2, you win !");
 							break;
@@ -635,16 +577,8 @@ public class PracticeFile {
 								&& ticTacToeArr[2][2] != "9") {
 
 							// display the board
-							System.out.println();
-							System.out.println(
-									ticTacToeArr[0][0] + "  |  " + ticTacToeArr[0][1] + "  |  " + ticTacToeArr[0][2]);
-							System.out.println("-------------");
-							System.out.println(
-									ticTacToeArr[1][0] + "  |  " + ticTacToeArr[1][1] + "  |  " + ticTacToeArr[1][2]);
-							System.out.println("-------------");
-							System.out.println(
-									ticTacToeArr[2][0] + "  |  " + ticTacToeArr[2][1] + "  |  " + ticTacToeArr[2][2]);
-							System.out.println();
+							printBoard(ticTacToeArr);
+							
 							// display win message
 							System.out.println("Draw, No winner !");
 							break;
