@@ -202,12 +202,12 @@ public class PracticeFile {
 					// check winner
 					if (isThereAWinner == false) {
 						isThereAWinner = checkWinner(ticTacToeArr, player1Symbol);
-						checkWinner(ticTacToeArr, player1Symbol);
+						// checkWinner(ticTacToeArr, player1Symbol);
 					}
 					// check Draw
 					if (isThereAWinner == false) {
 						isDraw = checkDraw(ticTacToeArr);
-						checkDraw(ticTacToeArr);
+						// checkDraw(ticTacToeArr);
 					}
 
 					if (PlayerOneTurn == false && isThereAWinner == false && isDraw == false) {
