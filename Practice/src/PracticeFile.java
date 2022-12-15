@@ -58,497 +58,190 @@ public class PracticeFile {
 
 	}
 
+	private static boolean checkMove(int playerMove, String[][] board, String symbol, boolean PlayerTurn) {
+		if (playerMove == 1) {
+			if (board[0][0] != "X" && board[0][0] != "O") {
+				// add value
+				board[0][0] = symbol;
+				PlayerTurn = false;
+			} else {
+				System.out.println("The position already choosen");
+				PlayerTurn = true;
+			}
+		} else if (playerMove == 2) {
+			if (board[0][1] != "X" && board[0][1] != "O") {
+				// add value
+				board[0][1] = symbol;
+				PlayerTurn = false;
+			} else {
+				System.out.println("The position already choosen");
+				PlayerTurn = true;
+			}
+		} else if (playerMove == 3) {
+			if (board[0][2] != "X" && board[0][2] != "O") {
+				board[0][2] = symbol;
+				PlayerTurn = false;
+			} else {
+				System.out.println("The position already choosen");
+				PlayerTurn = true;
+			}
+		} else if (playerMove == 4) {
+			if (board[1][0] != "X" && board[1][0] != "O") {
+				board[1][0] = symbol;
+				PlayerTurn = false;
+			} else {
+				System.out.println("The position already choosen");
+				PlayerTurn = true;
+			}
+		} else if (playerMove == 5) {
+			if (board[1][1] != "X" && board[1][1] != "O") {
+				board[1][1] = symbol;
+				PlayerTurn = false;
+			} else {
+				System.out.println("The position already choosen");
+				PlayerTurn = true;
+			}
+		} else if (playerMove == 6) {
+			if (board[1][2] != "X" && board[1][2] != "O") {
+				board[1][2] = symbol;
+				PlayerTurn = false;
+			} else {
+				System.out.println("The position already choosen");
+				PlayerTurn = true;
+			}
+		} else if (playerMove == 7) {
+			if (board[2][0] != "X" && board[2][0] != "O") {
+				board[2][0] = symbol;
+				PlayerTurn = false;
+			} else {
+				System.out.println("The position already choosen");
+				PlayerTurn = true;
+			}
+		} else if (playerMove == 8) {
+			if (board[2][1] != "X" && board[2][1] != "O") {
+				board[2][1] = symbol;
+				PlayerTurn = false;
+			} else {
+				System.out.println("The position already choosen");
+				PlayerTurn = true;
+			}
+		} else if (playerMove == 9) {
+			if (board[2][2] != "X" && board[2][2] != "O") {
+				board[2][2] = symbol;
+				PlayerTurn = false;
+			} else {
+				System.out.println("The position already choosen");
+				PlayerTurn = true;
+			}
+
+		}
+		// if player 1 select unknown selection
+		else {
+			System.out.println("Wrong selection");
+			PlayerTurn = true;
+		}
+
+		return PlayerTurn;
+	}
+
+	private static void Symbol(String[][] board, String player1Symbol, String player2Symbol) {
+		// define the player turn
+		boolean PlayerOneTurn;
+		boolean PlayerTwoTurn;
+		int validTurnsCounter = 0;
+
+		// player turn
+		PlayerOneTurn = true;
+		PlayerTwoTurn = false;
+		boolean isThereAWinner = false;
+		boolean isDraw = false;
+
+		// LOOP TO CONTINUE THE GAME
+		while (validTurnsCounter < 9 && isThereAWinner == false && isDraw == false) {
+
+			// display the board
+			printBoard(board);
+
+			// player 1 turn
+			if (PlayerOneTurn == true && PlayerTwoTurn == false && isThereAWinner == false && isDraw == false) {
+				// player 1 select move
+				System.out.print("Player 1, Make a move, Enter position: ");
+				Scanner player1Movesc = new Scanner(System.in);
+				int player1Move = Integer.parseInt(player1Movesc.nextLine());
+				// player1Movesc.close();
+
+				// check the selection position of player1 and add value
+				if (PlayerOneTurn == true && PlayerTwoTurn == false) {
+					PlayerOneTurn = checkMove(player1Move, board, player1Symbol, PlayerOneTurn);
+					if (PlayerOneTurn == false) {
+						PlayerTwoTurn = true;
+						validTurnsCounter++;
+					} else {
+						PlayerOneTurn = true;
+						PlayerTwoTurn = false;
+					}
+				}
+
+				// check winner
+				if (isThereAWinner == false) {
+					isThereAWinner = checkWinner(board, player1Symbol);
+				}
+
+				// check Draw
+				if (isThereAWinner == false) {
+					isDraw = checkDraw(board);
+				}
+
+				// player 2 turn
+				if (PlayerOneTurn == false && PlayerTwoTurn == true && isThereAWinner == false && isDraw == false) {
+					System.out.print("Player 2, Make a move, Enter position: ");
+					Scanner player2Movesc = new Scanner(System.in);
+					int player2Move = Integer.parseInt(player2Movesc.nextLine());
+					// player2Movesc.close();
+
+					// check the selection position of player2 and add value
+					if (PlayerTwoTurn == true && PlayerOneTurn == false) {
+						PlayerTwoTurn = checkMove(player2Move, board, player2Symbol, PlayerTwoTurn);
+						if (PlayerTwoTurn == false) {
+							PlayerOneTurn = true;
+							validTurnsCounter++;
+						} else {
+							PlayerTwoTurn = true;
+							PlayerOneTurn = false;
+						}
+					}
+
+					// check winner
+					if (isThereAWinner == false) {
+						isThereAWinner = checkWinner(board, player2Symbol);
+						checkWinner(board, player2Symbol);
+					}
+				}
+			}
+		} // loop
+	}
+
 	/**
 	 * @param args : practice TicTacToe Game
 	 */
 	public static void main(String[] args) {
 		// create array for the TicTacToe positions
 		String[][] ticTacToeArr = { { "1", "2", "3" }, { "4", "5", "6" }, { "7", "8", "9" } };
-
+		System.out.println("Start the Game!");
 		// display the board
 		printBoard(ticTacToeArr);
 
 		// players select there symbol
-		System.out.println("Player 1 select Symbol: X or O");
-		System.out.println("1- X");
-		System.out.println("2- O");
-		System.out.print("Here:");
-		Scanner selectSymbolsc = new Scanner(System.in);
-		int selectSymbol = selectSymbolsc.nextInt();
+		System.out.print("Player 1 write your Symbol: ");
+		Scanner selectSymbol1sc = new Scanner(System.in);
+		String player1Symbol = selectSymbol1sc.next();
+		System.out.print("Player 2 write your Symbol: ");
+		Scanner selectSymbol2sc = new Scanner(System.in);
+		String player2Symbol = selectSymbol2sc.next();
+		System.out.println();
 
-		// define the player turn
-		boolean PlayerOneTurn;
-		int validTurnsCounter = 0;
-
-		// if player 1 select X
-		if (selectSymbol == 1) {
-			// display the symbols
-			System.out.println("Player 1 select Symbol: X");
-			System.out.println("Player 2 select Symbol: O");
-
-			// player one turn
-			PlayerOneTurn = true;
-
-			boolean isThereAWinner = false;
-			boolean isDraw = false;
-
-			// LOOP TO CONTINUE THE GAME
-			while (validTurnsCounter < 9 && isThereAWinner == false && isDraw == false) {
-
-				// display the board
-				printBoard(ticTacToeArr);
-
-				if (PlayerOneTurn == true && isThereAWinner == false && isDraw == false) {
-					// player 1 select move
-					System.out.print("Player 1, Make a move, Enter position: ");
-					Scanner player1Movesc = new Scanner(System.in);
-					int player1Move = Integer.parseInt(player1Movesc.nextLine());
-					// player1Movesc.close();
-					String player1Symbol = "X";
-					String player2Symbol = "O";
-
-					// check the selection position of player1 and add value
-					if (player1Move == 1) {
-						if (ticTacToeArr[0][0] != "X" && ticTacToeArr[0][0] != "O") {
-							// add value
-							ticTacToeArr[0][0] = "X";
-							PlayerOneTurn = false;
-							validTurnsCounter++;
-						} else {
-							System.out.println("The position already choosen");
-							PlayerOneTurn = true;
-						}
-					} else if (player1Move == 2) {
-						if (ticTacToeArr[0][1] != "X" && ticTacToeArr[0][1] != "O") {
-							// add value
-							ticTacToeArr[0][1] = "X";
-							PlayerOneTurn = false;
-							validTurnsCounter++;
-						} else {
-							System.out.println("The position already choosen");
-							PlayerOneTurn = true;
-						}
-					} else if (player1Move == 3) {
-						if (ticTacToeArr[0][2] != "X" && ticTacToeArr[0][2] != "O") {
-							ticTacToeArr[0][2] = "X";
-							PlayerOneTurn = false;
-							validTurnsCounter++;
-						} else {
-							System.out.println("The position already choosen");
-							PlayerOneTurn = true;
-						}
-					} else if (player1Move == 4) {
-						if (ticTacToeArr[1][0] != "X" && ticTacToeArr[1][0] != "O") {
-							ticTacToeArr[1][0] = "X";
-							PlayerOneTurn = false;
-							validTurnsCounter++;
-						} else {
-							System.out.println("The position already choosen");
-							PlayerOneTurn = true;
-						}
-					} else if (player1Move == 5) {
-						if (ticTacToeArr[1][1] != "X" && ticTacToeArr[1][1] != "O") {
-							ticTacToeArr[1][1] = "X";
-							PlayerOneTurn = false;
-							validTurnsCounter++;
-						} else {
-							System.out.println("The position already choosen");
-							PlayerOneTurn = true;
-						}
-					} else if (player1Move == 6) {
-						if (ticTacToeArr[1][2] != "X" && ticTacToeArr[1][2] != "O") {
-							ticTacToeArr[1][2] = "X";
-							PlayerOneTurn = false;
-							validTurnsCounter++;
-						} else {
-							System.out.println("The position already choosen");
-							PlayerOneTurn = true;
-						}
-					} else if (player1Move == 7) {
-						if (ticTacToeArr[2][0] != "X" && ticTacToeArr[2][0] != "O") {
-							ticTacToeArr[2][0] = "X";
-							PlayerOneTurn = false;
-							validTurnsCounter++;
-						} else {
-							System.out.println("The position already choosen");
-							PlayerOneTurn = true;
-						}
-					} else if (player1Move == 8) {
-						if (ticTacToeArr[2][1] != "X" && ticTacToeArr[2][1] != "O") {
-							ticTacToeArr[2][1] = "X";
-							PlayerOneTurn = false;
-							validTurnsCounter++;
-						} else {
-							System.out.println("The position already choosen");
-							PlayerOneTurn = true;
-						}
-					} else if (player1Move == 9) {
-						if (ticTacToeArr[2][2] != "X" && ticTacToeArr[2][2] != "O") {
-							ticTacToeArr[2][2] = "X";
-							PlayerOneTurn = false;
-							validTurnsCounter++;
-						} else {
-							System.out.println("The position already choosen");
-							PlayerOneTurn = true;
-						}
-
-					}
-
-					// if player 1 select unknown selection
-					else {
-						System.out.println("Wrong selection");
-						PlayerOneTurn = true;
-					}
-					// check winner
-					if (isThereAWinner == false) {
-						isThereAWinner = checkWinner(ticTacToeArr, player1Symbol);
-						// checkWinner(ticTacToeArr, player1Symbol);
-					}
-					// check Draw
-					if (isThereAWinner == false) {
-						isDraw = checkDraw(ticTacToeArr);
-						// checkDraw(ticTacToeArr);
-					}
-
-					if (PlayerOneTurn == false && isThereAWinner == false && isDraw == false) {
-						// player 2 turn
-						System.out.print("Player 2, Make a move, Enter position: ");
-						Scanner player2Movesc = new Scanner(System.in);
-						int player2Move = Integer.parseInt(player2Movesc.nextLine());
-						// player2Movesc.close();
-
-						// check the selection position of player2 and add value
-						if (player2Move == 1) {
-							if (ticTacToeArr[0][0] != "O" && ticTacToeArr[0][0] != "X") {
-								ticTacToeArr[0][0] = "O";
-								PlayerOneTurn = true;
-								validTurnsCounter++;
-							} else {
-								System.out.println("The position already choosen");
-							}
-						} else if (player2Move == 2) {
-							if (ticTacToeArr[0][1] != "O" && ticTacToeArr[0][1] != "X") {
-								ticTacToeArr[0][1] = "O";
-								PlayerOneTurn = true;
-								validTurnsCounter++;
-							} else {
-								System.out.println("The position already choosen");
-							}
-						} else if (player2Move == 3) {
-							if (ticTacToeArr[0][2] != "O" && ticTacToeArr[0][2] != "X") {
-								ticTacToeArr[0][2] = "O";
-								PlayerOneTurn = true;
-								validTurnsCounter++;
-							} else {
-								System.out.println("The position already choosen");
-								PlayerOneTurn = false;
-							}
-						} else if (player2Move == 4) {
-							if (ticTacToeArr[1][0] != "O" && ticTacToeArr[1][0] != "X") {
-								ticTacToeArr[1][0] = "O";
-								PlayerOneTurn = true;
-								validTurnsCounter++;
-							} else {
-								System.out.println("The position already choosen");
-								PlayerOneTurn = false;
-							}
-						} else if (player2Move == 5) {
-							if (ticTacToeArr[1][1] != "O" && ticTacToeArr[1][1] != "X") {
-								ticTacToeArr[1][1] = "O";
-								PlayerOneTurn = true;
-								validTurnsCounter++;
-							} else {
-								System.out.println("The position already choosen");
-								PlayerOneTurn = false;
-							}
-						} else if (player2Move == 6) {
-							if (ticTacToeArr[1][2] != "O" && ticTacToeArr[1][2] != "X") {
-								ticTacToeArr[1][2] = "O";
-								PlayerOneTurn = true;
-								validTurnsCounter++;
-							} else {
-								System.out.println("The position already choosen");
-								PlayerOneTurn = false;
-							}
-						} else if (player2Move == 7) {
-							if (ticTacToeArr[2][0] != "O" && ticTacToeArr[2][0] != "X") {
-								ticTacToeArr[2][0] = "O";
-								PlayerOneTurn = true;
-								validTurnsCounter++;
-							} else {
-								System.out.println("The position already choosen");
-								PlayerOneTurn = false;
-							}
-						} else if (player2Move == 8) {
-							if (ticTacToeArr[2][1] != "O" && ticTacToeArr[2][1] != "X") {
-								ticTacToeArr[2][1] = "O";
-								PlayerOneTurn = true;
-								validTurnsCounter++;
-							} else {
-								System.out.println("The position already choosen");
-								PlayerOneTurn = false;
-							}
-						} else if (player2Move == 9) {
-							if (ticTacToeArr[2][2] != "O" && ticTacToeArr[2][2] != "X") {
-								ticTacToeArr[2][2] = "O";
-								PlayerOneTurn = true;
-								validTurnsCounter++;
-							} else {
-								System.out.println("The position already choosen");
-								PlayerOneTurn = false;
-							}
-						}
-						// if player 2 select unknown selection
-						else {
-							System.out.println("Wrong selection");
-							PlayerOneTurn = false;
-						}
-
-						// check winner
-						if (isThereAWinner == false) {
-							isThereAWinner = checkWinner(ticTacToeArr, player2Symbol);
-							checkWinner(ticTacToeArr, player2Symbol);
-						}
-					}
-				}
-			}
-		}
-
-		// if player 1 select O
-		else if (selectSymbol == 2) {
-			// display the symbols
-			System.out.println("Player 1 select Symbol: O");
-			System.out.println("Player 2 select Symbol: X");
-
-			// player one turn
-			PlayerOneTurn = true;
-			boolean isThereAWinner = false;
-			boolean isDraw = false;
-
-			// LOOP TO CONTINUE THE GAME
-			while (validTurnsCounter < 9 && isThereAWinner == false && isDraw == false) {
-
-				// display the board
-				printBoard(ticTacToeArr);
-
-				if (PlayerOneTurn == true && isThereAWinner == false && isDraw == false) {
-					// player 1 select move
-					System.out.print("Player 1, Make a move, Enter position: ");
-					Scanner player1Movesc = new Scanner(System.in);
-					int player1Move = Integer.parseInt(player1Movesc.nextLine());
-					// player1Movesc.close();
-					String player1Symbol = "O";
-					String player2Symbol = "X";
-
-					// check the selection position of player1 and add value
-					if (player1Move == 1) {
-						if (ticTacToeArr[0][0] != "X" && ticTacToeArr[0][0] != "O") {
-							// add value
-							ticTacToeArr[0][0] = "O";
-							PlayerOneTurn = false;
-							validTurnsCounter++;
-						} else {
-							System.out.println("The position already choosen");
-							PlayerOneTurn = true;
-						}
-					} else if (player1Move == 2) {
-						if (ticTacToeArr[0][1] != "X" && ticTacToeArr[0][1] != "O") {
-							// add value
-							ticTacToeArr[0][1] = "O";
-							PlayerOneTurn = false;
-							validTurnsCounter++;
-						} else {
-							System.out.println("The position already choosen");
-							PlayerOneTurn = true;
-						}
-					} else if (player1Move == 3) {
-						if (ticTacToeArr[0][2] != "X" && ticTacToeArr[0][2] != "O") {
-							ticTacToeArr[0][2] = "O";
-							PlayerOneTurn = false;
-							validTurnsCounter++;
-						} else {
-							System.out.println("The position already choosen");
-							PlayerOneTurn = true;
-						}
-					} else if (player1Move == 4) {
-						if (ticTacToeArr[1][0] != "X" && ticTacToeArr[1][0] != "O") {
-							ticTacToeArr[1][0] = "O";
-							PlayerOneTurn = false;
-							validTurnsCounter++;
-						} else {
-							System.out.println("The position already choosen");
-							PlayerOneTurn = true;
-						}
-					} else if (player1Move == 5) {
-						if (ticTacToeArr[1][1] != "X" && ticTacToeArr[1][1] != "O") {
-							ticTacToeArr[1][1] = "O";
-							PlayerOneTurn = false;
-							validTurnsCounter++;
-						} else {
-							System.out.println("The position already choosen");
-							PlayerOneTurn = true;
-						}
-					} else if (player1Move == 6) {
-						if (ticTacToeArr[1][2] != "X" && ticTacToeArr[1][2] != "O") {
-							ticTacToeArr[1][2] = "O";
-							PlayerOneTurn = false;
-							validTurnsCounter++;
-						} else {
-							System.out.println("The position already choosen");
-							PlayerOneTurn = true;
-						}
-					} else if (player1Move == 7) {
-						if (ticTacToeArr[2][0] != "X" && ticTacToeArr[2][0] != "O") {
-							ticTacToeArr[2][0] = "O";
-							PlayerOneTurn = false;
-							validTurnsCounter++;
-						} else {
-							System.out.println("The position already choosen");
-							PlayerOneTurn = true;
-						}
-					} else if (player1Move == 8) {
-						if (ticTacToeArr[2][1] != "X" && ticTacToeArr[2][1] != "O") {
-							ticTacToeArr[2][1] = "O";
-							PlayerOneTurn = false;
-							validTurnsCounter++;
-						} else {
-							System.out.println("The position already choosen");
-							PlayerOneTurn = true;
-						}
-					} else if (player1Move == 9) {
-						if (ticTacToeArr[2][2] != "X" && ticTacToeArr[2][2] != "O") {
-							ticTacToeArr[2][2] = "O";
-							PlayerOneTurn = false;
-							validTurnsCounter++;
-						} else {
-							System.out.println("The position already choosen");
-							PlayerOneTurn = true;
-						}
-					}
-					// if player 1 select unknown selection
-					else {
-						System.out.println("Wrong selection");
-						PlayerOneTurn = true;
-					}
-					// check winner
-					if (isThereAWinner == false) {
-						isThereAWinner = checkWinner(ticTacToeArr, player1Symbol);
-						checkWinner(ticTacToeArr, player1Symbol);
-					}
-					// check Draw
-					if (isThereAWinner == false) {
-						isDraw = checkDraw(ticTacToeArr);
-						checkDraw(ticTacToeArr);
-					}
-
-					if (PlayerOneTurn == false && isThereAWinner == false && isDraw == false) {
-						// player 2 turn
-						System.out.print("Player 2, Make a move, Enter position: ");
-						Scanner player2Movesc = new Scanner(System.in);
-						int player2Move = Integer.parseInt(player2Movesc.nextLine());
-						// player2Movesc.close();
-
-						// check the selection position of player2 and add value
-						if (player2Move == 1) {
-							if (ticTacToeArr[0][0] != "O" && ticTacToeArr[0][0] != "X") {
-								ticTacToeArr[0][0] = "X";
-								PlayerOneTurn = true;
-								validTurnsCounter++;
-							} else {
-								System.out.println("The position already choosen");
-							}
-						} else if (player2Move == 2) {
-							if (ticTacToeArr[0][1] != "O" && ticTacToeArr[0][1] != "X") {
-								ticTacToeArr[0][1] = "X";
-								PlayerOneTurn = true;
-								validTurnsCounter++;
-							} else {
-								System.out.println("The position already choosen");
-							}
-						} else if (player2Move == 3) {
-							if (ticTacToeArr[0][2] != "O" && ticTacToeArr[0][2] != "X") {
-								ticTacToeArr[0][2] = "X";
-								PlayerOneTurn = true;
-								validTurnsCounter++;
-							} else {
-								System.out.println("The position already choosen");
-								PlayerOneTurn = false;
-							}
-						} else if (player2Move == 4) {
-							if (ticTacToeArr[1][0] != "O" && ticTacToeArr[1][0] != "X") {
-								ticTacToeArr[1][0] = "X";
-								PlayerOneTurn = true;
-								validTurnsCounter++;
-							} else {
-								System.out.println("The position already choosen");
-								PlayerOneTurn = false;
-							}
-						} else if (player2Move == 5) {
-							if (ticTacToeArr[1][1] != "O" && ticTacToeArr[1][1] != "X") {
-								ticTacToeArr[1][1] = "X";
-								PlayerOneTurn = true;
-								validTurnsCounter++;
-							} else {
-								System.out.println("The position already choosen");
-								PlayerOneTurn = false;
-							}
-						} else if (player2Move == 6) {
-							if (ticTacToeArr[1][2] != "O" && ticTacToeArr[1][2] != "X") {
-								ticTacToeArr[1][2] = "X";
-								PlayerOneTurn = true;
-								validTurnsCounter++;
-							} else {
-								System.out.println("The position already choosen");
-								PlayerOneTurn = false;
-							}
-						} else if (player2Move == 7) {
-							if (ticTacToeArr[2][0] != "O" && ticTacToeArr[2][0] != "X") {
-								ticTacToeArr[2][0] = "X";
-								PlayerOneTurn = true;
-								validTurnsCounter++;
-							} else {
-								System.out.println("The position already choosen");
-								PlayerOneTurn = false;
-							}
-						} else if (player2Move == 8) {
-							if (ticTacToeArr[2][1] != "O" && ticTacToeArr[2][1] != "X") {
-								ticTacToeArr[2][1] = "X";
-								PlayerOneTurn = true;
-								validTurnsCounter++;
-							} else {
-								System.out.println("The position already choosen");
-								PlayerOneTurn = false;
-							}
-						} else if (player2Move == 9) {
-							if (ticTacToeArr[2][2] != "O" && ticTacToeArr[2][2] != "X") {
-								ticTacToeArr[2][2] = "X";
-								PlayerOneTurn = true;
-								validTurnsCounter++;
-							} else {
-								System.out.println("The position already choosen");
-								PlayerOneTurn = false;
-							}
-						}
-						// if player 2 select unknown selection
-						else {
-							System.out.println("Wrong selection");
-							PlayerOneTurn = false;
-						}
-						// check winner
-						if (isThereAWinner == false) {
-							isThereAWinner = checkWinner(ticTacToeArr, player2Symbol);
-							checkWinner(ticTacToeArr, player2Symbol);
-						}
-					}
-				}
-			}
-		}
-
-		// if player 1 select unknown selection
-		else {
-			System.out.println("Wrong selection try again!");
-			PlayerOneTurn = true;
-		}
+		// Play the Game
+		Symbol(ticTacToeArr, player1Symbol, player2Symbol);
 
 	} // End
 }
