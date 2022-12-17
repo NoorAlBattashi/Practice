@@ -59,166 +59,51 @@ public class PracticeFile {
 	}
 
 	private static boolean checkMove(int playerMove, String[][] board, String symbol, boolean PlayerTurn) {
-		if (playerMove == 1) {
-			if (board[0][0] != "X" && board[0][0] != "O") {
-				// add value
-				board[0][0] = symbol;
-				PlayerTurn = false;
-			} else {
-				System.out.println("The position already choosen");
-				PlayerTurn = true;
-			}
-		} else if (playerMove == 2) {
-			if (board[0][1] != "X" && board[0][1] != "O") {
-				// add value
-				board[0][1] = symbol;
-				PlayerTurn = false;
-			} else {
-				System.out.println("The position already choosen");
-				PlayerTurn = true;
-			}
-		} else if (playerMove == 3) {
-			if (board[0][2] != "X" && board[0][2] != "O") {
-				board[0][2] = symbol;
-				PlayerTurn = false;
-			} else {
-				System.out.println("The position already choosen");
-				PlayerTurn = true;
-			}
-		} else if (playerMove == 4) {
-			if (board[1][0] != "X" && board[1][0] != "O") {
-				board[1][0] = symbol;
-				PlayerTurn = false;
-			} else {
-				System.out.println("The position already choosen");
-				PlayerTurn = true;
-			}
-		} else if (playerMove == 5) {
-			if (board[1][1] != "X" && board[1][1] != "O") {
-				board[1][1] = symbol;
-				PlayerTurn = false;
-			} else {
-				System.out.println("The position already choosen");
-				PlayerTurn = true;
-			}
-		} else if (playerMove == 6) {
-			if (board[1][2] != "X" && board[1][2] != "O") {
-				board[1][2] = symbol;
-				PlayerTurn = false;
-			} else {
-				System.out.println("The position already choosen");
-				PlayerTurn = true;
-			}
-		} else if (playerMove == 7) {
-			if (board[2][0] != "X" && board[2][0] != "O") {
-				board[2][0] = symbol;
-				PlayerTurn = false;
-			} else {
-				System.out.println("The position already choosen");
-				PlayerTurn = true;
-			}
-		} else if (playerMove == 8) {
-			if (board[2][1] != "X" && board[2][1] != "O") {
-				board[2][1] = symbol;
-				PlayerTurn = false;
-			} else {
-				System.out.println("The position already choosen");
-				PlayerTurn = true;
-			}
-		} else if (playerMove == 9) {
-			if (board[2][2] != "X" && board[2][2] != "O") {
-				board[2][2] = symbol;
-				PlayerTurn = false;
-			} else {
-				System.out.println("The position already choosen");
-				PlayerTurn = true;
-			}
+		int rowIndex = 0;
+		int colIndex = 0;
 
+		if (playerMove == 1) {
+			rowIndex = 0;
+			colIndex = 0;
+		} else if (playerMove == 2) {
+			rowIndex = 0;
+			colIndex = 1;
+		} else if (playerMove == 3) {
+			rowIndex = 0;
+			colIndex = 2;
+		} else if (playerMove == 4) {
+			rowIndex = 1;
+			colIndex = 0;
+		} else if (playerMove == 5) {
+			rowIndex = 1;
+			colIndex = 1;
+		} else if (playerMove == 6) {
+			rowIndex = 1;
+			colIndex = 2;
+		} else if (playerMove == 7) {
+			rowIndex = 2;
+			colIndex = 0;
+
+		} else if (playerMove == 8) {
+			rowIndex = 2;
+			colIndex = 1;
+		} else if (playerMove == 9) {
+			rowIndex = 2;
+			colIndex = 2;
 		}
-		// if player 1 select unknown selection
 		else {
 			System.out.println("Wrong selection");
 			PlayerTurn = true;
 		}
 
+		if (board[rowIndex][colIndex] != symbol) {
+			board[rowIndex][colIndex] = symbol;
+			PlayerTurn = false;
+		} else if (board[rowIndex][colIndex] == symbol){
+			System.out.println("The position already choosen");
+			PlayerTurn = true;
+		}
 		return PlayerTurn;
-	}
-
-	private static void Symbol(String[][] board, String player1Symbol, String player2Symbol) {
-		// define the player turn
-		boolean PlayerOneTurn;
-		boolean PlayerTwoTurn;
-		int validTurnsCounter = 0;
-
-		// player turn
-		PlayerOneTurn = true;
-		PlayerTwoTurn = false;
-		boolean isThereAWinner = false;
-		boolean isDraw = false;
-
-		// LOOP TO CONTINUE THE GAME
-		while (validTurnsCounter < 9 && isThereAWinner == false && isDraw == false) {
-
-			// display the board
-			printBoard(board);
-
-			// player 1 turn
-			if (PlayerOneTurn == true && PlayerTwoTurn == false && isThereAWinner == false && isDraw == false) {
-				// player 1 select move
-				System.out.print("Player 1, Make a move, Enter position: ");
-				Scanner player1Movesc = new Scanner(System.in);
-				int player1Move = Integer.parseInt(player1Movesc.nextLine());
-				// player1Movesc.close();
-
-				// check the selection position of player1 and add value
-				if (PlayerOneTurn == true && PlayerTwoTurn == false) {
-					PlayerOneTurn = checkMove(player1Move, board, player1Symbol, PlayerOneTurn);
-					if (PlayerOneTurn == false) {
-						PlayerTwoTurn = true;
-						validTurnsCounter++;
-					} else {
-						PlayerOneTurn = true;
-						PlayerTwoTurn = false;
-					}
-				}
-
-				// check winner
-				if (isThereAWinner == false) {
-					isThereAWinner = checkWinner(board, player1Symbol);
-				}
-
-				// check Draw
-				if (isThereAWinner == false) {
-					isDraw = checkDraw(board);
-				}
-
-				// player 2 turn
-				if (PlayerOneTurn == false && PlayerTwoTurn == true && isThereAWinner == false && isDraw == false) {
-					System.out.print("Player 2, Make a move, Enter position: ");
-					Scanner player2Movesc = new Scanner(System.in);
-					int player2Move = Integer.parseInt(player2Movesc.nextLine());
-					// player2Movesc.close();
-
-					// check the selection position of player2 and add value
-					if (PlayerTwoTurn == true && PlayerOneTurn == false) {
-						PlayerTwoTurn = checkMove(player2Move, board, player2Symbol, PlayerTwoTurn);
-						if (PlayerTwoTurn == false) {
-							PlayerOneTurn = true;
-							validTurnsCounter++;
-						} else {
-							PlayerTwoTurn = true;
-							PlayerOneTurn = false;
-						}
-					}
-
-					// check winner
-					if (isThereAWinner == false) {
-						isThereAWinner = checkWinner(board, player2Symbol);
-						checkWinner(board, player2Symbol);
-					}
-				}
-			}
-		} // loop
 	}
 
 	/**
@@ -241,7 +126,81 @@ public class PracticeFile {
 		System.out.println();
 
 		// Play the Game
-		Symbol(ticTacToeArr, player1Symbol, player2Symbol);
+		
+		// define the player turn
+		boolean PlayerOneTurn;
+		boolean PlayerTwoTurn;
+		int validTurnsCounter = 0;
+
+		// player turn
+		PlayerOneTurn = true;
+		PlayerTwoTurn = false;
+		boolean isThereAWinner = false;
+		boolean isDraw = false;
+
+		// LOOP TO CONTINUE THE GAME
+		while (validTurnsCounter < 9 && isThereAWinner == false && isDraw == false) {
+
+			// display the board
+			printBoard(ticTacToeArr);
+
+			// player 1 turn
+			if (PlayerOneTurn == true && PlayerTwoTurn == false && isThereAWinner == false && isDraw == false) {
+				// player 1 select move
+				System.out.print("Player 1, Make a move, Enter position: ");
+				Scanner player1Movesc = new Scanner(System.in);
+				int player1Move = Integer.parseInt(player1Movesc.nextLine());
+				// player1Movesc.close();
+
+				// check the selection position of player1 and add value
+				if (PlayerOneTurn == true && PlayerTwoTurn == false) {
+					PlayerOneTurn = checkMove(player1Move, ticTacToeArr, player1Symbol, PlayerOneTurn);
+					if (PlayerOneTurn == false) {
+						PlayerTwoTurn = true;
+						validTurnsCounter++;
+					} else {
+						PlayerOneTurn = true;
+						PlayerTwoTurn = false;
+					}
+				}
+
+				// check winner
+				if (isThereAWinner == false) {
+					isThereAWinner = checkWinner(ticTacToeArr, player1Symbol);
+				}
+
+				// check Draw
+				if (isThereAWinner == false) {
+					isDraw = checkDraw(ticTacToeArr);
+				}
+
+				// player 2 turn
+				if (PlayerOneTurn == false && PlayerTwoTurn == true && isThereAWinner == false && isDraw == false) {
+					System.out.print("Player 2, Make a move, Enter position: ");
+					Scanner player2Movesc = new Scanner(System.in);
+					int player2Move = Integer.parseInt(player2Movesc.nextLine());
+					// player2Movesc.close();
+
+					// check the selection position of player2 and add value
+					if (PlayerTwoTurn == true && PlayerOneTurn == false) {
+						PlayerTwoTurn = checkMove(player2Move, ticTacToeArr, player2Symbol, PlayerTwoTurn);
+						if (PlayerTwoTurn == false) {
+							PlayerOneTurn = true;
+							validTurnsCounter++;
+						} else {
+							PlayerTwoTurn = true;
+							PlayerOneTurn = false;
+						}
+					}
+
+					// check winner
+					if (isThereAWinner == false) {
+						isThereAWinner = checkWinner(ticTacToeArr, player2Symbol);
+						checkWinner(ticTacToeArr, player2Symbol);
+					}
+				}
+			}
+		} // loop
 
 	} // End
 }
